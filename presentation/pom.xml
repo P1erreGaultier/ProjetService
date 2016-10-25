@@ -29,6 +29,7 @@
         <dependency>
             <groupId>com.alma.group7</groupId>
             <artifactId>api</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
