@@ -12,11 +12,11 @@ public class Product implements IEntity<Product> {
 	private final UUID identifier; //put the identity in better place ?
 	private String name;
 	private String description;
-	private int price;
+	private float price;
 	
 	
-	public Product(String name, String description, int price) {
-		this.identifier = UUID.randomUUID();
+	public Product(String name, String description, float price) {
+		this.identifier = UUID.randomUUID(); //random or db id?
 		this.name = name;
 		this.description = description;
 		this.price = price;
@@ -38,11 +38,11 @@ public class Product implements IEntity<Product> {
 		this.description = description;
 	}
 
-	public int getPrice() {
+	public float getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(float price) {
 		this.price = price;
 	}
 	
@@ -60,6 +60,14 @@ public class Product implements IEntity<Product> {
 		}
 		else return false;
 	}
+
+	@Override
+	public String toString() {
+		return "Product [identifier=" + identifier + ", name=" + name + ", description=" + description + ", price="
+				+ price + "]";
+	}
+	
+	
 	
 	//see in ddd sample github
 //	public int hashCode() {
