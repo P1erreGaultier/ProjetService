@@ -1,13 +1,13 @@
 package com.alma.fournisseur.infrastructure;
 
-import com.alma.fournisseur.domain.Product;
+import com.alma.fournisseur.domain.IEntity;
 
 public class Infrastruture {
 	
-	public Product getProduct(int id){
+	public IEntity getProduct(int id){
 		
-		//appelle factory
-		return null;
+		Factory f = new ProductFactory();
+		return f.getProduct(id);
 	}
 
 }
