@@ -19,11 +19,11 @@
     </developers>
 
     <modules>
-        <module>Infrastructure</module>
-        <module>Domain</module>
-        <module>application</module>
-        <module>presentation</module>
-        <module>API</module>
+        <module>com.alma.fournisseur.infrastructure</module>
+        <module>com.alma.fournisseur.domain</module>
+        <module>com.alma.fournisseur.application</module>
+        <module>com.alma.fournisseur.presentation</module>
+        <module>com.alma.fournisseur.api</module>
     </modules>
 
     <build>
@@ -37,17 +37,6 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
-            <plugin>
-     		  <artifactId>maven-site-plugin</artifactId>
-    		    <executions>
-      			    <execution>
-     			      <id>attach-descriptor</id>
-      			      <goals>
-       			     	 <goal>attach-descriptor</goal>
-         			  </goals>
-        		  </execution>
-        		</executions>
-    	  </plugin>
         </plugins>
         <pluginManagement>
             <plugins>
