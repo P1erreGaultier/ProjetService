@@ -1,6 +1,6 @@
 package com.alma.fournisseur.infrastructure;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import com.alma.fournisseur.domain.IEntity;
 
@@ -16,7 +16,11 @@ public class Infrastruture {
 		return f.getProduct(id);
 	}
 
-	public ArrayList<IEntity> getAllProduct(){	
+	public List<IEntity> getAllProduct(){	
 		return f.getAllProduct();
+	}
+	
+	public void closeDB(){
+		f.closeDB();
 	}
 }
