@@ -9,15 +9,11 @@ import java.util.UUID;
  */
 public abstract class Entity {
 
-	private UUID identifier;
+	private final UUID identifier = UUID.randomUUID();
 	
 	
 	public UUID getIdentifier() {
 		return identifier;
-	}
-
-	public void setIdentifier(UUID identifier) {
-		this.identifier = identifier;
 	}
 
 	/**

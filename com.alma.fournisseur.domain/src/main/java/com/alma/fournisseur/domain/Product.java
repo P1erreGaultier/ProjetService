@@ -13,12 +13,13 @@ public class Product extends Entity {
 	private int quantity;
 	
 	
-	public Product(String name, String description, float price, int q, int id) {
+	public Product(String name, String description, float price, int id, int q) {
 		super();
 		this.name = name;
 		this.description = description;
 		this.price = price;
 		this.quantity = q;
+		
 	}
 
 	public String getName() {
@@ -53,10 +54,12 @@ public class Product extends Entity {
 		this.quantity = quantity;
 	}
 
+	@Override
 	public boolean sameIdentityAs(Entity otherEntity) {
 		return otherEntity != null && getIdentifier().equals(otherEntity.getIdentifier());
 	}
 	
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
 			return true;
@@ -74,7 +77,7 @@ public class Product extends Entity {
 				+ price + "]";
 	}
 	
-
+	@Override
 	public int hashCode() {
 		return getIdentifier().hashCode();
 	}
