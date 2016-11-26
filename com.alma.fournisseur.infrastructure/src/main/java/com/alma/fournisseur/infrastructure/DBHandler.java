@@ -70,12 +70,12 @@ public final class DBHandler {
 	 * @param price
 	 * @param id
 	 */
-	public void create(String name, String description, Float price, int id, int nb_stock){
+	public void create(String name, String description, Float price, int id, int nbStock){
 		try {
 			stmt = c.createStatement();
 			String sql = "INSERT INTO PRODUCT (NAME,DESCRIPTION,PRICE,ID) "+"VALUES ('"+name+"', '"+description+"', "+price+", '"+id+"');"; 
 			stmt.executeUpdate(sql);
-			sql = "INSERT INTO STOCK (ID,NB_PROD) "+"VALUES ('"+id+"', '"+nb_stock+"');"; 
+			sql = "INSERT INTO STOCK (ID,NB_PROD) "+"VALUES ('"+id+"', '"+nbStock+"');"; 
 			stmt.executeUpdate(sql);
 		} catch ( Exception e ) {
 			logger.warn(e);
@@ -130,8 +130,8 @@ public final class DBHandler {
 				tupple.put("nb_prod",Integer.toString(rsStock.getInt("nb_prod")));
 				res.add(tupple);
 			}
-
 			rs.close();
+			rsStock.close();
 			stmt.close();
 		} catch ( Exception e ) {
 			logger.warn(e);

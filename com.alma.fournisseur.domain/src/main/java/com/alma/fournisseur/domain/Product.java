@@ -13,12 +13,13 @@ public class Product extends Entity {
 	private int quantity;
 	
 	
-	public Product(String name, String description, float price, int q) {
+	public Product(String name, String description, float price, int id, int q) {
 		super();
 		this.name = name;
 		this.description = description;
 		this.price = price;
 		this.quantity = q;
+		
 	}
 
 	public String getName() {
