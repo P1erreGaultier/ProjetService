@@ -131,7 +131,6 @@ public final class DBHandler {
 				res.add(tupple);
 			}
 			rs.close();
-			rsStock.close();
 			stmt.close();
 		} catch ( Exception e ) {
 			logger.warn(e);
