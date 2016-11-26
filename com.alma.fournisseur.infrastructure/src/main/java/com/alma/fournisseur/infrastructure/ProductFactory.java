@@ -15,9 +15,9 @@ public class ProductFactory implements IFactory{
 	}
 	
 
-	public IEntity create(String name, String description, Float price, int id) {
-		DBHandler.getInstance().create(name,description,price,id);
-		return new Product(name,description,price,id);
+	public IEntity create(String name, String description, Float price, int id,int nb_stock) {
+		DBHandler.getInstance().create(name,description,price,id,nb_stock);
+		return new Product(name,description,price,nb_stock,id);
 	}
 	
 	

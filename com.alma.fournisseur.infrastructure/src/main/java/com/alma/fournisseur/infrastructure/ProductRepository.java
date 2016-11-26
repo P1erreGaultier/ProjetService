@@ -23,7 +23,6 @@ public class ProductRepository implements IProductRepository{
 	}
 
 
-
 	@Override
 	public void deleteProduct(int id) {
 		DBHandler.getInstance().delete(id);	
