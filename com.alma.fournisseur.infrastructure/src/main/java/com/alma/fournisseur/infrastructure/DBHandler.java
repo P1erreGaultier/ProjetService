@@ -18,10 +18,13 @@ public final class DBHandler {
 	Statement stmt = null;
 	Connection c = null;
 
+	/**
+	 *  Singleton
+	 */
 	private DBHandler() {
 		super();
 	}
-
+	
 	public static final DBHandler getInstance() {
 
 		if (DBHandler.instance == null) {
@@ -34,7 +37,9 @@ public final class DBHandler {
 		return DBHandler.instance;
 	}
 
-
+	/**
+	 * Open Database Connection
+	 */
 	public void openDB(){
 		try {
 			Class.forName("org.sqlite.JDBC");
@@ -46,6 +51,9 @@ public final class DBHandler {
 		}
 	}
 
+	/**
+	 * Close Database Connection
+	 */
 	public void closeDB(){
 		try {
 			c.close();
@@ -55,19 +63,30 @@ public final class DBHandler {
 		logger.info("Database closed");
 	}
 
-	public void create(String name, String description, Float price, int id){
+	/**
+	 * Create a product and save it in the database
+	 * @param name
+	 * @param description
+	 * @param price
+	 * @param id
+	 */
+	public void create(String name, String description, Float price, int id, int nb_stock){
 		try {
 			stmt = c.createStatement();
 			String sql = "INSERT INTO PRODUCT (NAME,DESCRIPTION,PRICE,ID) "+"VALUES ('"+name+"', '"+description+"', "+price+", '"+id+"');"; 
 			stmt.executeUpdate(sql);
-			sql = "INSERT INTO STOCK (ID,NB_PROD) "+"VALUES ('"+id+"', '0');"; 
+			sql = "INSERT INTO STOCK (ID,NB_PROD) "+"VALUES ('"+id+"', '"+nb_stock+"');"; 
 			stmt.executeUpdate(sql);
 		} catch ( Exception e ) {
 			logger.warn(e);
 		}
 	}
 
-
+	/**
+	 * retrieve a product by ID
+	 * @param id
+	 * @return Map<String,String>
+	 */
 	public  Map<String,String> retrieve(int id){
 		Map<String,String> res = new HashMap<>();		    		 
 		try{
@@ -91,6 +110,10 @@ public final class DBHandler {
 		return res;
 	}
 
+	/**
+	 * retrieve all products
+	 * @return List<Map<String,String>>
+	 */
 	public List<Map<String,String>> retrieveAll(){  
 		ArrayList<Map<String,String>> res = new ArrayList<>();
 		Map<String,String> tupple;	  
@@ -103,8 +126,11 @@ public final class DBHandler {
 				tupple.put("description",rs.getString("description"));
 				tupple.put("price",Float.toString(rs.getFloat("price")));
 				tupple.put("id",Integer.toString(rs.getInt("id")));
+				ResultSet rsStock = stmt.executeQuery( "SELECT NB_PROD FROM STOCK where ID="+ rs.getInt("id") +";" );
+				tupple.put("nb_prod",Integer.toString(rsStock.getInt("nb_prod")));
 				res.add(tupple);
 			}
+
 			rs.close();
 			stmt.close();
 		} catch ( Exception e ) {

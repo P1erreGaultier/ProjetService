@@ -10,16 +10,15 @@ public class ProductFactory implements IFactory{
 		DBHandler.getInstance().openDB();
 	}
 	
-	@Override
-	public Entity create(String name, String description, Float price, int id) {
-		DBHandler.getInstance().create(name,description,price,id);
-		return new Product(name,description,price,id);
+
+	public Entity create(String name, String description, Float price, int id,int nb_stock) {
+		DBHandler.getInstance().create(name,description,price,id,nb_stock);
+		return new Product(name,description,price,nb_stock,id);
 	}
 	
 	
 	public void closeDB(){
 		DBHandler.getInstance().closeDB();
 	}
-
 
 }
