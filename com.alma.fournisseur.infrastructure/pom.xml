@@ -24,6 +24,11 @@
             <artifactId>com.alma.fournisseur.domain</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>com.alma.group7</groupId>
+            <artifactId>com.alma.fournisseur.api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
 	</dependencies>
 
 

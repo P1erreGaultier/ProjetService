@@ -141,6 +141,11 @@ public final class DBHandler {
 		return res;
 	}
 
+	/**
+	 * update the name of a product
+	 * @param name
+	 * @param id
+	 **/
 	public void updateName(String name, int id){
 		try {
 			stmt = c.createStatement();
@@ -152,6 +157,11 @@ public final class DBHandler {
 		logger.info("Update done successfully");
 	}
 
+	/**
+	 * update the description of a product
+	 * @param description
+	 * @param id
+	 **/
 	public void updateDescription(String description, int id){
 		try {
 			stmt = c.createStatement();
@@ -163,6 +173,11 @@ public final class DBHandler {
 		logger.info("Update done successfully");
 	}
 
+	/**
+	 * update the price of a product
+	 * @param price
+	 * @param id
+	 **/
 	public void updatePrice(Float price, int id){
 		try {
 			stmt = c.createStatement();
@@ -174,6 +189,11 @@ public final class DBHandler {
 		logger.info("Update done successfully");
 	}
 	
+	/**
+	 * update the stock of a product
+	 * @param stock
+	 * @param id
+	 **/
 	public void updateStock(int stock, int id){
 		try {
 			stmt = c.createStatement();
@@ -185,7 +205,10 @@ public final class DBHandler {
 		logger.info("Update done successfully");
 	}
 
-	
+	/**
+	 * delete a product
+	 * @param id
+	 **/
 	public void delete(int id){
 		try {
 			stmt = c.createStatement();
