@@ -9,14 +9,14 @@ import java.util.UUID;
  */
 public class Product implements IEntity<Product> {
 	
-	private final UUID identifier; //put the identity in better place ?
+	private final int identifier;
 	private String name;
 	private String description;
 	private float price;
 	
 	
 	public Product(String name, String description, float price) {
-		this.identifier = UUID.randomUUID(); //random or db id?
+		this.identifier = 0;
 		this.name = name;
 		this.description = description;
 		this.price = price;
@@ -47,7 +47,7 @@ public class Product implements IEntity<Product> {
 	}
 	
 	public boolean sameIdentityAs(Product otherEntity) {
-		return otherEntity != null && this.identifier.equals(otherEntity.identifier);
+		return otherEntity != null && this.identifier==otherEntity.identifier;
 	}
 	
 	public boolean equals(Object obj) {

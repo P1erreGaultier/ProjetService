@@ -1,32 +1,31 @@
 package com.alma.fournisseur.domain;
 
 public interface IProductRepository {
-	/* CRUDE methods */
-	
-	/**
-	 * Create a new product
-	 * @param entity
-	 */
-	public void create(Product entity);
 	
 	/**
 	 * Show a product
 	 * @param entity
 	 * @return
 	 */
-	public Product read(Product entity);
+	public Product displayOneProduct(Product entity);
+	
+	/**
+	 * Show a product
+	 * @param entity
+	 * @return
+	 */
+	public Product displayAllProducts();
 	
 	/**
 	 * Modify a product
 	 * @param entity
 	 */
-	public void update(Product entity);
+	public void updateProduct(Product entity);
 	
 	/**
 	 * Delete a product
 	 * @param entity
 	 */
-	public void delete(Product entity);
+	public void deleteProduct(Product entity);
 	
-//	public void execute();
 }
