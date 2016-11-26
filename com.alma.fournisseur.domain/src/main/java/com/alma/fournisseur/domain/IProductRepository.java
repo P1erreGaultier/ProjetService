@@ -1,5 +1,7 @@
 package com.alma.fournisseur.domain;
 
+import java.util.List;
+
 public interface IProductRepository {
 	
 	/**
@@ -7,25 +9,19 @@ public interface IProductRepository {
 	 * @param entity
 	 * @return
 	 */
-	public Product displayOneProduct(Product entity);
+	public Product displayOneProduct(int id);
 	
 	/**
 	 * Show a product
 	 * @param entity
 	 * @return
 	 */
-	public Product displayAllProducts();
-	
-	/**
-	 * Modify a product
-	 * @param entity
-	 */
-	public void updateProduct(Product entity);
+	public List<Product> displayAllProducts();
 	
 	/**
 	 * Delete a product
 	 * @param entity
 	 */
-	public void deleteProduct(Product entity);
+	public void deleteProduct(int id);
 	
 }

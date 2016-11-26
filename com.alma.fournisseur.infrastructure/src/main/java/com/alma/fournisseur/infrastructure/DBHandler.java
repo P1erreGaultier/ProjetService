@@ -3,7 +3,6 @@ package com.alma.fournisseur.infrastructure;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -61,6 +60,8 @@ public final class DBHandler {
 			stmt = c.createStatement();
 			String sql = "INSERT INTO PRODUCT (NAME,DESCRIPTION,PRICE,ID) "+"VALUES ('"+name+"', '"+description+"', "+price+", '"+id+"');"; 
 			stmt.executeUpdate(sql);
+			sql = "INSERT INTO STOCK (ID,NB_PROD) "+"VALUES ('"+id+"', '0');"; 
+			stmt.executeUpdate(sql);
 		} catch ( Exception e ) {
 			logger.warn(e);
 		}
@@ -79,6 +80,8 @@ public final class DBHandler {
 				res.put("id",Integer.toString(rs.getInt("id")));
 			}
 			rs.close();
+			rs = stmt.executeQuery( "SELECT NB_PROD FROM STOCK where ID="+ id +";" );
+			res.put("nb_prod",Integer.toString(rs.getInt("nb_prod")));
 			stmt.close();
 		} catch ( Exception e ) {
 			logger.warn(e);
@@ -87,7 +90,6 @@ public final class DBHandler {
 
 		return res;
 	}
-
 
 	public List<Map<String,String>> retrieveAll(){  
 		ArrayList<Map<String,String>> res = new ArrayList<Map<String,String>>();
@@ -145,12 +147,25 @@ public final class DBHandler {
 		}
 		logger.info("Update done successfully");
 	}
+	
+	public void updateStock(int stock, int id){
+		try {
+			stmt = c.createStatement();
+			String sql = "UPDATE STOCK set NB_PROD="+stock+" WHERE ID="+id+";"; 
+			stmt.executeUpdate(sql);
+		} catch ( Exception e ) {
+			logger.warn(e);
+		}
+		logger.info("Update done successfully");
+	}
 
 	
 	public void delete(int id){
 		try {
 			stmt = c.createStatement();
 			String sql = "DELETE FROM  PRODUCT WHERE ID="+id+";"; 
+			stmt.executeUpdate(sql);
+			sql = "DELETE FROM  STOCK WHERE ID="+id+";"; 
 			stmt.executeUpdate(sql);
 		} catch ( Exception e ) {
 			logger.warn(e);

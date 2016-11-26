@@ -15,8 +15,8 @@ public class Product implements IEntity<Product> {
 	private float price;
 	
 	
-	public Product(String name, String description, float price) {
-		this.identifier = 0;
+	public Product(String name, String description, float price,int id) {
+		this.identifier = id;
 		this.name = name;
 		this.description = description;
 		this.price = price;

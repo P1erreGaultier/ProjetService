@@ -4,36 +4,26 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import com.alma.fournisseur.domain.IFactory;
 import com.alma.fournisseur.domain.IEntity;
 import com.alma.fournisseur.domain.Product;
 
-public class ProductFactory implements Factory{
+public class ProductFactory implements IFactory{
 	
 	public ProductFactory(){
 		DBHandler.getInstance().openDB();
 	}
 	
-	public IEntity getProduct(int id){
-		
-		Map<String,String> prod = DBHandler.getInstance().retrieve(id);
-		return new Product(prod.get("name"),prod.get("description"),Float.parseFloat(prod.get("price")));
-			
-	}
 
-	@Override
-	public List<IEntity> getAllProduct() {
-		ArrayList<IEntity> res = new ArrayList<IEntity>();
-		for(Map<String, String> m : DBHandler.getInstance().retrieveAll()){
-			res.add(new Product(m.get("name"),m.get("description"),Float.parseFloat(m.get("price"))));
-		}
-		return res;
+	public IEntity create(String name, String description, Float price, int id) {
+		DBHandler.getInstance().create(name,description,price,id);
+		return new Product(name,description,price,id);
 	}
+	
 	
 	public void closeDB(){
 		DBHandler.getInstance().closeDB();
 	}
-	
-	
-	
+
 
 }
