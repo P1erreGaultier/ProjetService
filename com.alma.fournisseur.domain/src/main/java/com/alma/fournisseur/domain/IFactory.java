@@ -1,7 +1,5 @@
 package com.alma.fournisseur.domain;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public interface IFactory {
 	

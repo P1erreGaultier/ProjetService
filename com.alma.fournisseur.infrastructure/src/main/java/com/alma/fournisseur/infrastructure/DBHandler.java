@@ -69,7 +69,7 @@ public final class DBHandler {
 
 
 	public  Map<String,String> retrieve(int id){
-		Map<String,String> res = new HashMap<String,String>();		    		 
+		Map<String,String> res = new HashMap<>();		    		 
 		try{
 			stmt = c.createStatement();
 			ResultSet rs = stmt.executeQuery( "SELECT * FROM PRODUCT where ID="+ id +";" );
@@ -92,13 +92,13 @@ public final class DBHandler {
 	}
 
 	public List<Map<String,String>> retrieveAll(){  
-		ArrayList<Map<String,String>> res = new ArrayList<Map<String,String>>();
+		ArrayList<Map<String,String>> res = new ArrayList<>();
 		Map<String,String> tupple;	  
 		try{
 			stmt = c.createStatement();
 			ResultSet rs = stmt.executeQuery( "SELECT * FROM PRODUCT;" );
 			while ( rs.next() ) {
-				tupple = new HashMap<String,String>();	
+				tupple = new HashMap<>();	
 				tupple.put("name",rs.getString("name"));
 				tupple.put("description",rs.getString("description"));
 				tupple.put("price",Float.toString(rs.getFloat("price")));
