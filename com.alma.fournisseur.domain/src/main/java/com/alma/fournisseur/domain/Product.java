@@ -1,25 +1,24 @@
 package com.alma.fournisseur.domain;
 
-import java.util.UUID;
-
 /**
  * 
  * @author liciax
  *
  */
-public class Product implements IEntity<Product> {
+public class Product extends Entity {
 	
-	private final int identifier;
 	private String name;
 	private String description;
 	private float price;
+	private int quantity;
 	
 	
-	public Product(String name, String description, float price,int id) {
-		this.identifier = id;
+	public Product(String name, String description, float price, int q, int id) {
+		super();
 		this.name = name;
 		this.description = description;
 		this.price = price;
+		this.quantity = q;
 	}
 
 	public String getName() {
@@ -46,8 +45,16 @@ public class Product implements IEntity<Product> {
 		this.price = price;
 	}
 	
-	public boolean sameIdentityAs(Product otherEntity) {
-		return otherEntity != null && this.identifier==otherEntity.identifier;
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public boolean sameIdentityAs(Entity otherEntity) {
+		return otherEntity != null && getIdentifier().equals(otherEntity.getIdentifier());
 	}
 	
 	public boolean equals(Object obj) {
@@ -63,14 +70,13 @@ public class Product implements IEntity<Product> {
 
 	@Override
 	public String toString() {
-		return "Product [identifier=" + identifier + ", name=" + name + ", description=" + description + ", price="
+		return "Product [identifier=" + getIdentifier() + ", name=" + name + ", description=" + description + ", price="
 				+ price + "]";
 	}
 	
+
+	public int hashCode() {
+		return getIdentifier().hashCode();
+	}
 	
-	
-	//see in ddd sample github
-//	public int hashCode() {
-//		return identifier.hashCode();
-//	}
 }

@@ -126,8 +126,11 @@ public final class DBHandler {
 				tupple.put("description",rs.getString("description"));
 				tupple.put("price",Float.toString(rs.getFloat("price")));
 				tupple.put("id",Integer.toString(rs.getInt("id")));
+				ResultSet rsStock = stmt.executeQuery( "SELECT NB_PROD FROM STOCK where ID="+ rs.getInt("id") +";" );
+				tupple.put("nb_prod",Integer.toString(rsStock.getInt("nb_prod")));
 				res.add(tupple);
 			}
+
 			rs.close();
 			stmt.close();
 		} catch ( Exception e ) {
