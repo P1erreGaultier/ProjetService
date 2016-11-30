@@ -9,17 +9,24 @@ public class Product extends Entity {
 	
 	private String name;
 	private String description;
-	private float price;
+	private double price;
 	private int quantity;
 	
-	
-	public Product(String name, String description, float price, int id, int q) {
+	public Product(String name, String description, double d) {
 		super();
 		this.name = name;
 		this.description = description;
-		this.price = price;
-		this.quantity = q;
+		this.price = d;
+		this.quantity = 0;
 		
+	}
+	
+	public Product(String name, String description, double d, int id, int q) {
+		super();
+		this.name = name;
+		this.description = description;
+		this.price = d;
+		this.quantity = q;
 	}
 
 	public String getName() {
@@ -38,11 +45,11 @@ public class Product extends Entity {
 		this.description = description;
 	}
 
-	public float getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
-	public void setPrice(float price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 	
@@ -56,7 +63,7 @@ public class Product extends Entity {
 
 	@Override
 	public boolean sameIdentityAs(Entity otherEntity) {
-		return otherEntity != null && getIdentifier().equals(otherEntity.getIdentifier());
+		return otherEntity != null && getIdentifier()==(otherEntity.getIdentifier());
 	}
 	
 	@Override
@@ -74,12 +81,11 @@ public class Product extends Entity {
 	@Override
 	public String toString() {
 		return "Product [identifier=" + getIdentifier() + ", name=" + name + ", description=" + description + ", price="
-				+ price + "]";
+				+ price + "quantity=" + quantity + "]";
 	}
 	
 	@Override
 	public int hashCode() {
-		return getIdentifier().hashCode();
+		return getIdentifier();
 	}
-	
 }
