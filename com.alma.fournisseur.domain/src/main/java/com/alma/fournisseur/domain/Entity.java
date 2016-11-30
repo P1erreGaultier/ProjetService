@@ -9,10 +9,9 @@ import java.util.UUID;
  */
 public abstract class Entity {
 
-	private final UUID identifier = UUID.randomUUID();
-	
-	
-	public UUID getIdentifier() {
+	private int identifier = UUID.randomUUID().hashCode();
+
+	public int getIdentifier() {
 		return identifier;
 	}
 

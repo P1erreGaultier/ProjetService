@@ -11,5 +11,21 @@
     <artifactId>com.alma.fournisseur.api</artifactId>
 
     <packaging>jar</packaging>
+    
+    <repositories>
+        <repository>
+            <id>jcenter</id>
+            <url>http://jcenter.bintray.com/</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>pl.pojo</groupId>
+            <artifactId>pojo-tester</artifactId>
+            <version>0.6.0</version>
+            <scope>test</scope>
+        </dependency>
+</dependencies>
 
 </project>
