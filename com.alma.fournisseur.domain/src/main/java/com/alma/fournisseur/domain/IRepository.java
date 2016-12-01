@@ -2,6 +2,7 @@ package com.alma.fournisseur.domain;
 
 import java.util.List;
 
+
 public interface IRepository{
 	
 	/**
@@ -18,10 +19,13 @@ public interface IRepository{
 	 */
 	public List<Entity> displayAllEntitys();
 	
+	
 	/**
 	 * Delete a Entity
 	 * @param entity
 	 */
 	public void deleteEntity(int id);
+
+	Entity createEntity(String name, String description, Float price, int id, int nbStock);
 	
 }

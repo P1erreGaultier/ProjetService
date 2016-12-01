@@ -43,7 +43,7 @@ public final class DBHandler {
 	public void openDB(){
 		try {
 			Class.forName("org.sqlite.JDBC");
-			c = DriverManager.getConnection("jdbc:sqlite:db_tab1.sqlite");
+			c = DriverManager.getConnection("jdbc:sqlite:C:/Users/Pierre/git/ProjetService/com.alma.fournisseur.infrastructure/db_tab1.sqlite");
 			c.setAutoCommit(false);
 			logger.info("Opened database successfully");
 		} catch ( Exception e ) {

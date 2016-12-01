@@ -23,24 +23,12 @@ public class Application {
 		return facto;
 	}
 
-	public void setFacto(IFactory facto) {
-		this.facto = facto;
-	}
-
 	public IRepository getRepo() {
 		return repo;
 	}
 
-	public void setRepo(IRepository repo) {
-		this.repo = repo;
-	}
-
 	public IService getService() {
 		return service;
-	}
-
-	public void setService(IService service) {
-		this.service = service;
 	}
 	
 }

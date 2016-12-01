@@ -12,7 +12,6 @@ public class ProductFactory implements IFactory{
 	
 	@Override
 	public Entity create(String name, String description, Float price, int id, int nbStock) {
-		DBHandler.getInstance().create(name, description, price, id, nbStock);
 		return new Product(name, description, price, id, nbStock);
 	}
 	

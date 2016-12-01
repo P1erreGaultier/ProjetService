@@ -9,10 +9,10 @@ public class Product extends Entity {
 	
 	private String name;
 	private String description;
-	private double price;
+	private float price;
 	private int quantity;
 	
-	public Product(String name, String description, double d) {
+	public Product(String name, String description, float d) {
 		super();
 		this.name = name;
 		this.description = description;
@@ -21,12 +21,13 @@ public class Product extends Entity {
 		
 	}
 	
-	public Product(String name, String description, double d, int id, int q) {
+	public Product(String name, String description, float d, int id, int q) {
 		super();
 		this.name = name;
 		this.description = description;
 		this.price = d;
 		this.quantity = q;
+		this.setIdentifier(id);
 	}
 
 	public String getName() {
@@ -45,11 +46,11 @@ public class Product extends Entity {
 		this.description = description;
 	}
 
-	public double getPrice() {
+	public float getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(float price) {
 		this.price = price;
 	}
 	

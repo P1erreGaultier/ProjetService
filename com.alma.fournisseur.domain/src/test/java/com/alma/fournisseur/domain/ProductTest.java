@@ -16,8 +16,8 @@ public class ProductTest {
 	
 	@Test
 	public void testSameIdentityAs() {
-		Product prod1 = new Product("litiere1", "un produit test num 1", 5.5);
-		Product prod2 = new Product("litiere2", "un produit test num 2", 3.2);
+		Product prod1 = new Product("litiere1", "un produit test num 1", (float) 5.5);
+		Product prod2 = new Product("litiere2", "un produit test num 2", (float) 3.2);
 		assertFalse(prod1.sameIdentityAs(prod2));
 		assertTrue(prod1.sameIdentityAs(prod1));
 	}

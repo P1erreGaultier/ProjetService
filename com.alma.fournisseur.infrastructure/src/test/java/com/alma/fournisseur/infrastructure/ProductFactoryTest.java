@@ -2,12 +2,11 @@ package com.alma.fournisseur.infrastructure;
 
 import static org.junit.Assert.*;
 
-import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import jdk.nashorn.internal.runtime.regexp.JoniRegExp.Factory;
+import com.alma.fournisseur.domain.Product;
 
 public class ProductFactoryTest {
 	
@@ -19,14 +18,13 @@ public class ProductFactoryTest {
 	}
 	
 	@Test
-	public void testCreate() {
-		factory.create("test", "description",(float) 12.3,17,29);
-		Map<String, String> m=DBHandler.getInstance().retrieve(17);
-		assertTrue(m.get("name").equals("test"));
-		assertTrue(m.get("price").equals("12.3"));
-		assertTrue(m.get("id").equals("17"));
-		assertTrue(m.get("nb_prod").equals("29"));
-		DBHandler.getInstance().delete(17);
+	public void testCreate() {		
+		
+		Product p = (Product) factory.create("test", "description",12.3F,17,29);
+		assertTrue(p.getName().equals("test"));
+		assertTrue(p.getPrice()==12.3F);
+		assertTrue(p.getIdentifier()==17);
+		assertTrue(p.getQuantity()==29);
 	}
 
 }

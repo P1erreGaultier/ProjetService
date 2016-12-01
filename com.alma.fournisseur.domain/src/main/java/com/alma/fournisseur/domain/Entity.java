@@ -1,6 +1,5 @@
 package com.alma.fournisseur.domain;
 
-import java.util.UUID;
 
 /**
  * 
@@ -9,11 +8,17 @@ import java.util.UUID;
  */
 public abstract class Entity {
 
-	private int identifier = UUID.randomUUID().hashCode();
+	private int identifier;
 
 	public int getIdentifier() {
 		return identifier;
 	}
+	
+	public void setIdentifier(int identifier) {
+		this.identifier = identifier;
+	}
+
+
 
 	/**
 	 * The method compares two entities by their identifiers
