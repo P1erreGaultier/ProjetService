@@ -9,6 +9,7 @@ public class Service implements IService{
         
 		CheckCreditCardService service =  new CheckCreditCardService();
 		com.alma.wsimport.CheckCreditCard ccc = service.getCheckCreditCard();
+		ccc.validateCard(card);
 		return true;
 	}
 }

@@ -16,9 +16,6 @@ public class ProductRepositoryTest {
 		fail("Not yet implemented");
 	}
 
-	@Test
-	public void testDeleteProduct() {
-		fail("Not yet implemented");
-	}
+
 
 }
