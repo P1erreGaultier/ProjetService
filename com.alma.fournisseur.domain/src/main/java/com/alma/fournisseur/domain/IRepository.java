@@ -27,5 +27,7 @@ public interface IRepository{
 	public void deleteEntity(int id);
 
 	Entity createEntity(String name, String description, Float price, int id, int nbStock);
+
+	void updateStockPurchased(int id);
 	
 }

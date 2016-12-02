@@ -2,6 +2,7 @@ package com.alma.fournisseur.infrastructure;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
 import java.util.Map;
 
 import org.junit.Before;
@@ -39,5 +40,12 @@ public class DBHandlerTest {
 		assertTrue(m.get("id").equals("17"));
 		assertTrue(m.get("nb_prod").equals("29"));
 		DBHandler.getInstance().delete(17);
+	}
+	
+	
+	@Test
+	public void testRetrieveAll() {
+		List<Map<String, String>> m= DBHandler.getInstance().retrieveAll();
+		System.out.println(m);
 	}
 }

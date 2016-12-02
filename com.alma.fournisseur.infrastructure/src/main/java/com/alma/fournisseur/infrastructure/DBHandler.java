@@ -16,6 +16,7 @@ public final class DBHandler {
 	private static volatile DBHandler instance = null;
 	private static final Logger logger = Logger.getLogger(DBHandler.class);
 	Statement stmt = null;
+	Statement stmtStock = null;
 	Connection c = null;
 
 	/**
@@ -119,6 +120,7 @@ public final class DBHandler {
 		Map<String,String> tupple;	  
 		try{
 			stmt = c.createStatement();
+			stmtStock = c.createStatement();
 			ResultSet rs = stmt.executeQuery( "SELECT * FROM PRODUCT;" );
 			while ( rs.next() ) {
 				tupple = new HashMap<>();	
@@ -126,7 +128,7 @@ public final class DBHandler {
 				tupple.put("description",rs.getString("description"));
 				tupple.put("price",Float.toString(rs.getFloat("price")));
 				tupple.put("id",Integer.toString(rs.getInt("id")));
-				ResultSet rsStock = stmt.executeQuery( "SELECT NB_PROD FROM STOCK where ID="+ rs.getInt("id") +";" );
+				ResultSet rsStock = stmtStock.executeQuery( "SELECT NB_PROD FROM STOCK where ID="+ rs.getInt("id") +";" );
 				tupple.put("nb_prod",Integer.toString(rsStock.getInt("nb_prod")));
 				res.add(tupple);
 			}

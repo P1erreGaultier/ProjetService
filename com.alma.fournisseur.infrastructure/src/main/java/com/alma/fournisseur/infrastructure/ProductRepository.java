@@ -33,6 +33,11 @@ public class ProductRepository implements IRepository{
 		}
 		return res;
 	}
+	
+	@Override
+	public void updateStockPurchased(int id) {
+		DBHandler.getInstance().updateStock(Integer.parseInt(DBHandler.getInstance().retrieve(id).get("nb_prod"))-1, id);;	
+	}
 
 	@Override
 	public void deleteEntity(int id) {

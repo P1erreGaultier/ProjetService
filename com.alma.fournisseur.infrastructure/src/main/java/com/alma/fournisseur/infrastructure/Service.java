@@ -5,11 +5,11 @@ import com.alma.wsimport.CheckCreditCardService;
 
 public class Service implements IService{
 
-	public boolean checkCreditCard(String card) {      
+	public String checkCreditCard(String card) {      
         
 		CheckCreditCardService service =  new CheckCreditCardService();
 		com.alma.wsimport.CheckCreditCard ccc = service.getCheckCreditCard();
-		ccc.validateCard(card);
-		return true;
+		return ccc.validateCard(card);
+		
 	}
 }
